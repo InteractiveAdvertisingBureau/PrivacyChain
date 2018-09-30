@@ -1,13 +1,11 @@
-**Introductio**
+# Introduction
 
-The PrivacyChain is a distributed, blockchain platform , based on a shared, immutable, distributed ledger. This ledger ensures that participants in a PrivacyChain have a single, consistent, up-to-date view to a consumer&#39;s opt-ins or opt-outs, something that is more difficult to accomplish with traditional technologies. As a result, PrivacyChain helps publishers and advertisers build more trusting relationships with their customers.  It also provides companies with a standardized consent management solution which speeds and simplifies deployment for all their partners in the data supply chain.  And because of this consistency and ease of deployment, PrivacyChain simplifies companies&#39; ability to prove that they are complying with numerous consumer privacy regulations worldwide, including the California Consumer Privacy Act, General Data Protection Regulation, and the European Privacy Directive, as well as a company&#39;s own privacy policies.
+The PrivacyChain is a distributed, blockchain platform , based on a shared, immutable, distributed ledger. This ledger ensures that participants in a PrivacyChain have a single, consistent, up-to-date view to a consumers opt-ins or opt-outs, something that is more difficult to accomplish with traditional technologies. As a result, PrivacyChain helps publishers and advertisers build more trusting relationships with their customers.  It also provides companies with a standardized consent management solution which speeds and simplifies deployment for all their partners in the data supply chain.  And because of this consistency and ease of deployment, PrivacyChain simplifies companies' ability to prove that they are complying with numerous consumer privacy regulations worldwide, including the California Consumer Privacy Act, General Data Protection Regulation, and the European Privacy Directive, as well as a company's own privacy policies.
 
-A reference implementation and testbed shall be available at[\&lt;INSERT URL\&gt;](http://www.iab.org/privacychain).  Companies interested in testing the specification can build applications that make calls into the testbed and see how they are handled and propagated across the blockchain in a standard implementation.
-
-PrivacyChain implements following use cases:
+A reference implementation and testbed shall be available at http://www.iab.org/privacychain.  Companies interested in testing the specification can build applications that make calls into the testbed and see how they are handled and propagated across the blockchain in a standard implementation.
 
 # Entities
-
+Following entities are defined in privacychain:
 1. Data Collector – For example, Brand, Publisher, Data Source of consumer data
 2. Data Buyer – For example, Brand, Ad Agency, Data Aggregator
 3. Advertiser – For example, Brand, Ad Agency
