@@ -13,7 +13,7 @@ Following entities are defined in privacychain:
 
 ## Use Case 1 – Consent Collection
 
-| Title | Data Collector captures consent when an individual&#39;s personal data and opt-in preference is being collected |
+| Title | Data Collector captures consent when an individual's personal data and opt-in preference is being collected |
 | --- | --- |
 | Description |
 1.Individual signs up as a member at the data collector1 ("entity") website
@@ -50,10 +50,10 @@ Following entities are defined in privacychain:
 
 ## Use Case 4 – Consent Collection
 
-| Title | Data Seller captures individual&#39;s consent when individual's personal data is being collected   |
+| Title | Data Seller captures individual's consent when individual's personal data is being collected   |
 | --- | --- |
 | Description |
-1.Individual signs up to use services at a data collector7 (&quot;entity&quot;) site
+1.Individual signs up to use services at a data collector7 ('entity') site
 2. Website displays privacy messaging and prompts individual to opt-in to accept privacy terms and condition
 3. Privacy terms and condition and opt-in include individual personal data collection:
   ..* For the entity to provide basic services
