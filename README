@@ -124,3 +124,22 @@ Following entities are defined in privacychain:
 
 API specification can be found in Swaggerhub repository
 https://app.swaggerhub.com/apis/jhsy/PrivacyChain/1.0.0#/](https://app.swaggerhub.com/apis/jhsy/PrivacyChain/1.0.0#/
+
+| **Item #** | **Priority** | **Endpoint** | **Parameters** | **Method** | **Notes** |
+| --- | --- | --- | --- | --- | --- |
+| CT-01 | MVP | /consent | {id}{consentType}{entity}{expires}{attributes}{status} | POSTPUT | Add a new consent record to the chainUpdate an existing consent |
+| CT-02 | V1.0 | /consent/createWithArray | {id}{consentType}{entity}{expires}{attributes}{status} | POST | Create multiple consents with given input array |
+| CT-03 | V1.0 | /consent/createWithList | {id}{consentType}{entity}{expires}{attributes}{status} | POST | Create multiple consents with input list |
+| CT-04 | MVP | /consent/findIdsByEntity |   | GET | Find consent IDs by entity |
+| CT-05 | MVP | /consent/{consentId} | {id}{consentType}{entity}{expires}{attributes}{status} | GET | Find consent by consent ID |
+| CT-06 | V1.0 | /consent/revokeWithArray |   | POST | Revoke multiple consent records |
+| CT-07 | MVP | /consent/revoke/{consentId} |   | POST | Revoke single consent record |
+| DT-01 | MVP | /datatransfer | {id}{consentId}{source}{destination}{attributes}{status} | POSTPUT | Log data transfer actionUpdate an existing data transfer |
+| DT-02 | V1.0 | /datatransfer/createWithArray | {id}{consentId}{source}{destination}{attributes}{status} | POST | Create data transfers with given input array |
+| DT-03 | V1.0 | /datatransfer/createWithList | {id}{consentId}{source}{destination}{attributes}{status} | POST | Create data transfer with given input list |
+| DT-04 | MVP | /datatransfer/findByConsentID | {id}{consentId}{source}{destination}{attributes}{status} | GET | Find data transfers by consent ID |
+| DT-05 | MVP | /datatransfer/{datatransferId} | {id}{consentId}{source}{destination}{attributes}{status} | GET | Find data transfer by data transfer ID |
+| SB-01 | V1.0 | /subscription | {id}{consentId}{entity}{subscriptionDate}{email}{status} | POST | Subscribe to notifications for all events related to a consent record |
+| SB-02 | V1.0 | /subscription/findByEntity |   | GET | Return subscriptions for an entity |
+| SB-03 | V1.0 | /subscription/{subscriptionId} |   | GETDELETE | Find subscription by subscription IDDelete subscription by subscription ID |
+
