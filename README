@@ -19,10 +19,10 @@ Following entities are defined in privacychain:
 1.Individual signs up as a member at the data collector1 ("entity") website
 2. Website displays privacy messaging and prompts user to opt-in to accept privacy terms and condition
 3. The website requests user to provide consent on the use of the individuals data for these purposes:
-  ..* For the entity to provide basic services
-  ..* For first party site personalization
-  ..* For first party marketing purpose
-  ..* For sharing with third party for market purpose|
+  * For the entity to provide basic services
+  * For first party site personalization
+  * For first party marketing purpose
+  * For sharing with third party for market purpose|
 | Post condition | Individuals consent along with its meta data2 is captured in PrivacyChain |
 
 ## Use Case 2 – Data Movement Tracking
@@ -32,7 +32,6 @@ Following entities are defined in privacychain:
 | Description |
 1. Advertiser creates audience segment for advertising campaign
 2. Advertiser ensure that audience has provided consent for their data to be used for marketing purpose
-3.
 3.Advertiser transfers audience segment to third party3 for campaign execution
 4. Third party received audience segment |
 | Post condition | Transfer of individual's consent along with its meta data4 to the third party is captured in PrivacyChain- Third party receipt of individual's consent along with its meta data is captured in PrivacyChain|
@@ -56,9 +55,9 @@ Following entities are defined in privacychain:
 1.Individual signs up to use services at a data collector7 ('entity') site
 2. Website displays privacy messaging and prompts individual to opt-in to accept privacy terms and condition
 3. Privacy terms and condition and opt-in include individual personal data collection:
-  ..* For the entity to provide basic services
-  ..* For first party site personalization
-  ..* For first party to share data with third party part of data sales|
+  * For the entity to provide basic services
+  * For first party site personalization
+  * For first party to share data with third party part of data sales|
 | Post condition | Individual's consent along with its meta data8 is captured in PrivacyChain |
 
 ## Use Case 5 – Data Movement Tracking
@@ -79,10 +78,10 @@ Following entities are defined in privacychain:
 2. User inquires attribute(s) he/she has provided data to the brand
 3. User inquires movement of his/her data outside of the brand |
 | Post condition | The brand's website displays a list of user's attribute(s) along with meta data:
-   ..* Consent status
-   ..* Expiry date
-   ..* Usage/purpose
-   ..* The brand's website displays a list of third party destinations in which user's data has been shared with/transferred to |
+   * Consent status
+   * Expiry date
+   * Usage/purpose
+   * The brand's website displays a list of third party destinations in which user's data has been shared with/transferred to |
 
 ## Use Case 7 – Data Propagation
 
@@ -93,8 +92,8 @@ Following entities are defined in privacychain:
 2. User inquires attribute(s) he/she has provided data to the brand
 3. User revoke consent to share data with third party |
 | Post condition |
- ..* The action of revoking consent to share data with third party is captured in PrivacyChain
- ..* PrivacyChain triggers consent revocation notification to all third-party entities that had received the individual's consent previously |
+ * The action of revoking consent to share data with third party is captured in PrivacyChain
+ * PrivacyChain triggers consent revocation notification to all third-party entities that had received the individual's consent previously |
 
 ## Use Case 8 – Auditing
 
@@ -104,8 +103,8 @@ Following entities are defined in privacychain:
 1. Regulator access PrivacyChain
 2. Regulator retrieve audit trail of data collection, data movement with consent along with the metadata for a particular Data Collector/Processor|
 | Post condition |
- ..* PrivacyChain supports audit trail data extraction
- ..* Regulator determines compliance |
+ * PrivacyChain supports audit trail data extraction
+ * Regulator determines compliance |
 
 ## Use Case 9 – External Governance and Monitoring
 
@@ -117,8 +116,8 @@ Following entities are defined in privacychain:
 3. Regulatory authority and consumer advocacy group follow provisioning instructions
 4. PrivacyChain provision regulatory authority and consumer advocacy group within the network |
 | Post condition |
- ..* Regulatory authority and consumer advocacy group each runs a node within PrivacyChain
- ..* Regulatory authority and consumer advocacy group access data within the ledger |
+ * Regulatory authority and consumer advocacy group each runs a node within PrivacyChain
+ * Regulatory authority and consumer advocacy group access data within the ledger |
 
 ## API Calls
 
