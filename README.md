@@ -15,10 +15,7 @@ Following entities are defined in privacychain:
 
 | Title | Data Collector captures consent when an individual's personal data and opt-in preference is being collected |
 | --- | --- |
-| Description |
-1.Individual signs up as a member at the data collector1 ("entity") website
-2. Website displays privacy messaging and prompts user to opt-in to accept privacy terms and condition
-3. The website requests user to provide consent on the use of the individuals data for these purposes:
+| Description | 1.Individual signs up as a member at the data collector1 ("entity") website 2. Website displays privacy messaging and prompts user to opt-in to accept privacy terms and condition 3. The website requests user to provide consent on the use of the individuals data for these purposes:
   * For the entity to provide basic services
   * For first party site personalization
   * For first party marketing purpose
