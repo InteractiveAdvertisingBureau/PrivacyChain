@@ -80,7 +80,7 @@ Following entities are defined in privacychain:
 
 ### API Calls
 
-API specification can be found in Swaggerhub repository - [Privacy Chain API Docs](https://iabtechlab.com/privacychain/api-docs){:target="_blank"}
+API specification can be found in Swaggerhub repository - <a href="https://iabtechlab.com/privacychain/api-docs" target="_blank">Privacy Chain API Docs</a>
 
 | **Item #** | **Priority** | **Endpoint** | **Parameters** | **Method** | **Notes** |
 | --- | --- | --- | --- | --- | --- |
