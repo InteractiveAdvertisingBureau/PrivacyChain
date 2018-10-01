@@ -1,4 +1,8 @@
-# Introduction
+![iab tech lab](https://user-images.githubusercontent.com/19175352/38649177-0d37d17c-3daa-11e8-8934-f0fb47919716.png)
+
+# PrivacyChian
+
+## Introduction
 
 The PrivacyChain is a distributed, blockchain platform , based on a shared, immutable, distributed ledger. This ledger ensures that participants in a PrivacyChain have a single, consistent, up-to-date view to a consumers opt-ins or opt-outs, something that is more difficult to accomplish with traditional technologies. As a result, PrivacyChain helps publishers and advertisers build more trusting relationships with their customers.  It also provides companies with a standardized consent management solution which speeds and simplifies deployment for all their partners in the data supply chain.  And because of this consistency and ease of deployment, PrivacyChain simplifies companies' ability to prove that they are complying with numerous consumer privacy regulations worldwide, including the California Consumer Privacy Act, General Data Protection Regulation, and the European Privacy Directive, as well as a company's own privacy policies.
 
