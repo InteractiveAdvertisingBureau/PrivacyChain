@@ -22,9 +22,8 @@ Following entities are defined in privacychain:
 
 | Title | Advertiser tracks audience data movement when personal data is transferred to a third party   |
 | --- | --- |
-| Description |<ol><li>Advertiser creates audience segment for advertising campaign</li><li>Advertiser ensure that audience has provided consent for their data to be used for marketing purpose</li><li>Advertiser transfers audience segment to third party3 for campaign execution</li><li>Third party received audience segment</li></ol> |
-
-| Post condition | <ol><li>Transfer of individual's consent along with its meta data4 to the third party is captured in PrivacyChain</li><li>Third party receipt of individual's consent along with its meta data is captured in PrivacyChain </li></ol> |
+| Description |<ol><li>Advertiser creates audience segment for advertising campaign</li><li>Advertiser ensure that audience has provided consent for their data to be used for marketing purpose</li><li>Advertiser transfers audience segment to third party for campaign execution</li><li>Third party received audience segment</li></ol> |
+| Post condition | <ol><li>Transfer of individual's consent along with its meta data to the third party is captured in PrivacyChain</li><li>Third party receipt of individual's consent along with its meta data is captured in PrivacyChain </li></ol> |
 
 ## Use Case 3 – Data Movement Tracking
 
