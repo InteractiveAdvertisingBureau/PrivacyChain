@@ -1,0 +1,10 @@
+{
+  "gemName": "audience_chain_api_client",
+  "gemAuthor": "Acxiom",
+  "gemAuthorEmail": "jascao@acxiom.com",
+  "gemHomepage": "https://github.com/AcxiomSwateam/AudienceChain",
+  "gemSummary": "AUDIENCE CHAIN API",
+  "gemDescription": "Audience Chain Api",
+  "gemVersion": "1.0.30",
+  "moduleName": "AudienceChainApiClient"
+}

@@ -1,0 +1,875 @@
+swagger: '2.0'
+info:
+  description: >
+    This is the API for PrivacyChain.  You can find out more about PrivacyChain
+    at [http://privacychain.io](http://privacychain.io).
+  version: 1.0.0
+  title: PrivacyChain API
+  termsOfService: 'http://privacychain.io/terms/'
+  contact:
+    email: api@privacychain.io
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: virtserver.swaggerhub.com
+# basePath: /L655/PrivacyChain/1.0.0
+tags:
+  - name: consent
+    description: >-
+      Record the consumer's explicit Consent to have their data used as
+      specified attributes.
+  - name: datatransfer
+    description: Records of Data Transfers from one company to another
+  - name: subscription
+    description: Subscribe to notifications for all events related to a Consent record
+schemes:
+  - https
+  - http
+paths:
+  /consent:
+    post:
+      tags:
+        - consent
+      summary: Add a new consent to the chain
+      operationId: addConsent
+      consumes:
+        - application/json
+        - application/xml
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - in: body
+          name: consent
+          description: consent object that needs to be added to the chain (id is ignored)
+          required: true
+          schema:
+            $ref: '#/definitions/Consent'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/ConsentIdResponse'
+        '201':
+          description: system error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+        - privacychain_auth:
+            - 'write:consents'
+            - 'read:consents'
+    put:
+      tags:
+        - consent
+      summary: Update an existing consent
+      operationId: updateConsent
+      consumes:
+        - application/json
+        - application/xml
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - in: body
+          name: body
+          description: consent object that needs to be updated to the chain
+          required: true
+          schema:
+            $ref: '#/definitions/Consent'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/BaseResponse'
+        '201':
+          description: system error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+        - privacychain_auth:
+            - 'write:consents'
+            - 'read:consents'
+  /consent/createWithArray:
+    post:
+      tags:
+        - consent
+      summary: Creates consents with given input array
+      operationId: createConsentsWithArrayInput
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - in: body
+          name: consents
+          description: List of consent objects
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Consent'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/IdsResponse'
+  /consent/createWithList:
+    post:
+      tags:
+        - consent
+      summary: Creates consents with given input list
+      operationId: createConsentsWithListInput
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - in: body
+          name: consents
+          description: List of datatransfer object
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Consent'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/IdsResponse'
+  /consent/findIdsByEntity:
+    get:
+      tags:
+        - consent
+      summary: Finds consents IDs by entity
+      description: Multiple entity values can be provided with comma separated strings
+      operationId: findconsentsByEntity
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - name: entity
+          in: query
+          description: Entity to filter by
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/IdsResponse'
+        '201':
+          description: system error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+        - privacychain_auth:
+            - 'write:consents'
+            - 'read:consents'
+  '/consent/{consentId}':
+    get:
+      tags:
+        - consent
+      summary: Find consent by ID
+      description: Returns a single consent
+      operationId: getConsentById
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - name: consentId
+          in: path
+          description: ID of consent to return
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/ConsentResponse'
+        '201':
+          description: system error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+        - api_key: []
+  /consent/revokeWithArray:
+    post:
+      tags:
+        - consent
+      summary: revoke multiple consents
+      operationId: revokeMultiple
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - in: body
+          name: consents
+          description: consents
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/BaseResponse'
+        '201':
+          description: system error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+        - privacychain_auth:
+            - 'write:consents'
+            - 'read:consents'
+  '/consent/revoke/{consentId}':
+    post:
+      tags:
+        - consent
+      summary: revoke single consent
+      operationId: revoke
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - name: consentId
+          in: path
+          description: consent ID
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/BaseResponse'
+        '201':
+          description: system error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+        - privacychain_auth:
+            - 'write:consents'
+            - 'read:consents'
+  '/consent/getConsentHistoryByConsentId/{consentId}':
+    get:
+      tags:
+        - consent
+      summary: Get the History By ConsentId.
+      description: Get the History By ConsentId.
+      operationId: getDataHistoryByConsentId
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: consentId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/ConsentHistoryResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /subscription:
+    post:
+      tags:
+        - subscription
+      summary: Place an subscription for events of a consent
+      operationId: placeSubscription
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - in: body
+          name: subscription
+          description: >-
+            subscription to get notifications for all events related to a
+            consent
+          required: true
+          schema:
+            $ref: '#/definitions/Subscription'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/IdResponse'
+        '201':
+          description: system error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /subscription/findByEntity:
+    get:
+      tags:
+        - subscription
+      summary: Returns subscriptions for an entity
+      description: Returns all subscriptions for an entity
+      operationId: findByEntity
+      produces:
+        - application/json
+      parameters:
+        - name: entity
+          in: query
+          description: Entity to filter by
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/SubscriptionsResponse'
+      security:
+        - api_key: []
+  '/subscription/{subscriptionId}':
+    get:
+      tags:
+        - subscription
+      summary: Find subscription by ID
+      description: >-
+        For valid response try integer IDs with value >= 1 and <= 10.\ \ Other
+        values will generated exceptions
+      operationId: getSubscriptionById
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - name: subscriptionId
+          in: path
+          description: ID of consent that needs to be fetched
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/SubscriptionResponse'
+    delete:
+      tags:
+        - subscription
+      summary: Delete subscription by ID
+      description: >-
+        For valid response try integer IDs with positive integer value.\ \
+        Negative or non-integer values will generate API errors
+      operationId: deleteSubscription
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - name: subscriptionId
+          in: path
+          description: ID of the subscription that needs to be deleted
+          required: true
+          type: integer
+          minimum: 1
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/BaseResponse'
+        '201':
+          description: system error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /datatransfer:
+    post:
+      tags:
+        - datatransfer
+      summary: Create datatransfer
+      description: log a data transfer.
+      operationId: createdatatransfer
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - in: body
+          name: body
+          description: Created datatransfer object
+          required: true
+          schema:
+            $ref: '#/definitions/Datatransfer'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/IdResponse'
+    put:
+      tags:
+        - datatransfer
+      summary: Update an existing datatransfer
+      operationId: updateDatatransfer
+      consumes:
+        - application/json
+        - application/xml
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - in: body
+          name: body
+          description: data transfer object that needs to be updated to the chain
+          required: true
+          schema:
+            $ref: '#/definitions/Datatransfer'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/BaseResponse'
+      security:
+        - privacychain_auth:
+            - 'write:consents'
+            - 'read:consents'
+  /datatransfer/createWithArray:
+    post:
+      tags:
+        - datatransfer
+      summary: Creates datatransfers with given input array
+      operationId: createdatatransfersWithArrayInput
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - in: body
+          name: body
+          description: List of datatransfer object
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Datatransfer'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/IdsResponse'
+  /datatransfer/createWithList:
+    post:
+      tags:
+        - datatransfer
+      summary: Creates datatransfers with given input list
+      operationId: createdatatransfersWithListInput
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - in: body
+          name: body
+          description: List of datatransfer object
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Datatransfer'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/IdsResponse'
+  /datatransfer/findByConsentID:
+    get:
+      tags:
+        - datatransfer
+      summary: Finds data transfers by consent ID
+      description: >-
+        Given a consent ID, returns all data transfers related to that consent
+        ID
+      operationId: findDatatransferByConsentID
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - name: consentID
+          in: query
+          description: Consent ID to filter by
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/DatatransfersResponse'
+      security:
+        - privacychain_auth:
+            - 'write:consents'
+            - 'read:consents'
+  '/datatransfer/{datatransferId}':
+    get:
+      tags:
+        - datatransfer
+      summary: Get datatransfer by datatransfer ID
+      operationId: getdatatransferByID
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - name: datatransferId
+          in: path
+          description: The ID that needs to be fetched.
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/DatatransferResponse'
+securityDefinitions:
+  privacychain_auth:
+    type: oauth2
+    authorizationUrl: 'http://auth.privacychain.io/oauth/dialog'
+    flow: implicit
+    scopes:
+      'write:consents': modify consents in your account
+      'read:consents': read your consents
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+definitions:
+  Consent:
+    type: object
+    properties:
+      id:
+        type: string
+      consentType:
+        type: string
+      entity:
+        type: string
+      expires:
+        type: string
+        format: date-time
+      attributes:
+        type: array
+        xml:
+          name: attribute
+          wrapped: true
+        items:
+          type: string
+      tags:
+        type: array
+        xml:
+          name: tag
+          wrapped: true
+        items:
+          $ref: '#/definitions/Tag'
+      status:
+        type: string
+        description: consent status
+        enum:
+          - valid
+          - revoked
+    xml:
+      name: consent
+    example:
+      expires: 2000-01-23T04:56:07.000Z
+      consentType: consentType
+      attributes:
+        - attributes
+        - attributes
+      id: 0
+      entity: entity
+      tags:
+        - name: name
+          id: 6
+        - name: name
+          id: 6
+      status: valid
+  Datatransfer:
+    type: object
+    properties:
+      id:
+        type: string
+      consentId:
+        type: integer
+        format: int64
+      source:
+        type: string
+      destination:
+        type: string
+      attributes:
+        type: array
+        items:
+          type: string
+      timestamp:
+        type: string
+      status:
+        type: string
+        description: consent status
+        enum:
+          - valid
+          - DataDeleted
+    xml:
+      name: datatransfer
+    example:
+      consentId: 6
+      destination: destination
+      attributes:
+        - attributes
+        - attributes
+      id: 0
+      source: source
+      status: valid
+      timestamp: "2018-08-27 14:34:56"
+  Subscription:
+    type: object
+    properties:
+      id:
+        type: string
+      consentId:
+        type: integer
+        format: int64
+      entity:
+        type: string
+      subscriptionDate:
+        type: string
+        format: date-time
+      email:
+        type: string
+      status:
+        type: string
+        description: Subscription Status
+        enum:
+          - active
+          - inactive
+    xml:
+      name: Subscription
+    example:
+      subscriptionDate: 2000-01-23T04:56:07.000Z
+      consentId: 6
+      id: 0
+      entity: entity
+      email: email
+      status: active
+  Tag:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    xml:
+      name: Tag
+    example:
+      name: name
+      id: 6
+  BaseResponse:
+    type: object
+    properties:
+      returnCode:
+        type: string
+      returnMessage:
+        type: string
+    example:
+      returnCode: '000'
+      returnMessage: Success
+  ErrorResponse:
+    type: object
+    properties:
+      returnCode:
+        type: string
+      returnMessage:
+        type: string
+    example:
+      returnCode: '201'
+      returnMessage: System Error
+  ConsentIdResponse:
+    type: object
+    properties:
+      returnCode:
+        type: string
+      returnMessage:
+        type: string
+      consentId:
+        type: string
+    example:
+      returnCode: '000'
+      returnMessage: Success
+      consentId: eb9c0e812c0541c1a60749fbf91d7065
+  ConsentResponse:
+    type: object
+    properties:
+      returnCode:
+        type: string
+      returnMessage:
+        type: string
+      consent:
+        $ref: '#/definitions/Consent'
+    example:
+      returnCode: returnCode
+      returnMessage: returnMessage
+      consent:
+        expires: 2000-01-23T04:56:07.000Z
+        consentType: consentType
+        attributes:
+          - attributes
+          - attributes
+        id: 0
+        entity: entity
+        tags:
+          - name: name
+            id: 6
+          - name: name
+            id: 6
+        status: valid
+  IdsResponse:
+    type: object
+    properties:
+      returnCode:
+        type: string
+      returnMessage:
+        type: string
+      ids:
+        type: array
+        items:
+          type: string
+    example:
+      returnCode: '000'
+      returnMessage: Success
+      ids:
+        - eb9c0e812c0541c1a60749fbf91d7065
+  IdResponse:
+    type: object
+    properties:
+      returnCode:
+        type: string
+      returnMessage:
+        type: string
+      id:
+        type: string
+    example:
+      returnCode: '000'
+      returnMessage: Success
+      id: eb9c0e812c0541c1a60749fbf91d7065
+  SubscriptionResponse:
+    type: object
+    properties:
+      returnCode:
+        type: string
+      returnMessage:
+        type: string
+      subscription:
+        $ref: '#/definitions/Subscription'
+    example:
+      returnCode: returnCode
+      returnMessage: returnMessage
+      subscription:
+        subscriptionDate: 2000-01-23T04:56:07.000Z
+        consentId: 6
+        id: 0
+        entity: entity
+        email: email
+        status: active
+  SubscriptionsResponse:
+    type: object
+    properties:
+      returnCode:
+        type: string
+      returnMessage:
+        type: string
+      subscription:
+        type: array
+        items:
+          $ref: '#/definitions/Subscription'
+    example:
+      returnCode: returnCode
+      returnMessage: returnMessage
+      subscription:
+        - subscriptionDate: 2000-01-23T04:56:07.000Z
+          consentId: 6
+          id: 0
+          entity: entity
+          email: email
+          status: active
+        - subscriptionDate: 2000-01-23T04:56:07.000Z
+          consentId: 6
+          id: 0
+          entity: entity
+          email: email
+          status: active
+  DatatransfersResponse:
+    type: object
+    properties:
+      returnCode:
+        type: string
+      returnMessage:
+        type: string
+      datatransfers:
+        type: array
+        items:
+          $ref: '#/definitions/Datatransfer'
+    example:
+      returnCode: returnCode
+      returnMessage: returnMessage
+      datatransfers:
+        - consentId: 6
+          destination: destination
+          attributes:
+            - attributes
+            - attributes
+          id: 0
+          source: source
+          status: valid
+        - consentId: 6
+          destination: destination
+          attributes:
+            - attributes
+            - attributes
+          id: 0
+          source: source
+          status: valid
+  DatatransferResponse:
+    type: object
+    properties:
+      returnCode:
+        type: string
+      returnMessage:
+        type: string
+      datatransfer:
+        $ref: '#/definitions/Datatransfer'
+    example:
+      returnCode: returnCode
+      returnMessage: returnMessage
+      datatransfer:
+        consentId: 6
+        destination: destination
+        attributes:
+          - attributes
+          - attributes
+        id: 0
+        source: source
+        status: valid
+  ConsentHistoryResponse:
+    type: object
+    properties:
+      returnCode:
+        type: string
+      returnMessage:
+        type: string
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            txId:
+              type: string
+            timestamp:
+              type: string
+            isDelete:
+              type: string
+            collectData:
+              type: array
+              items:
+                $ref: '#/definitions/Consent'
+externalDocs:
+  description: Find out more about PrivacyChain
+  url: 'http://privacychain.io'

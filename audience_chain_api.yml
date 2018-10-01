@@ -1,0 +1,701 @@
+swagger: '2.0'
+info:
+  description: This is a server api of audienceChain.
+  version: 1.0.0
+  title: AudienceChain
+host: 'localhost:8088'
+basePath: /
+schemes:
+  - http
+paths:
+  '/company/uploadCompanyData/{companyName}':
+    post:
+      summary: upload Company Data to privacychain.
+      description: upload Company Data to privacychain.
+      operationId: uploadCompanyData
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: companyName
+          required: true
+          type: string
+        - in: formData
+          name: file
+          description: The file need to be uploaded.
+          required: true
+          type: file
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /company/getCompanyList:
+    get:
+      summary: get Company List.
+      description: get Company List.
+      operationId: getCompanyList
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+              summary:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  fileName:
+                    type: string
+                  totalCount:
+                    type: integer
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  '/company/uploadSegmentData/{companyName}/{segmentName}':
+    post:
+      summary: upload Segment Data to privacychain.
+      description: upload Segment Data to privacychain.
+      operationId: uploadSegmentData
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: companyName
+          required: true
+          type: string
+        - in: path
+          name: segmentName
+          required: true
+          type: string
+        - in: formData
+          name: file
+          description: The file need to be uploaded.
+          required: true
+          type: file
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  '/company/getSegmentList/{companyName}':
+    get:
+      summary: get Segment List.
+      description: get Segment List.
+      operationId: getSegmentList
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: companyName
+          required: true
+          type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+              summary:
+                type: object
+                properties:
+                  companyName:
+                    type: string
+                  segmentName:
+                    type: string
+                  fileName:
+                    type: string
+                  totalCount:
+                    type: integer
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /company/matchData:
+    post:
+      summary: match Data.
+      description: match Data.
+      operationId: matchData
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: updateBody
+          description: update parameters
+          required: true
+          schema:
+            type: object
+            properties:
+              targetCompanyName:
+                type: string
+              companyName:
+                type: string
+              segmentName:
+                type: string
+              matchKey:
+                type: array
+                items:
+                  type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  '/company/getMatchResult/{companyName}':
+    get:
+      summary: get Match Result.
+      description: get Match Result.
+      operationId: getMatchResult
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: companyName
+          required: true
+          type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+              summary:
+                type: object
+                properties:
+                  segmentName:
+                    type: string
+                  targetCompanyName:
+                    type: string
+                  totalMatched:
+                    type: integer
+                  totalSegCount:
+                    type: integer
+                  status:
+                    type: string
+                  finishTime:
+                    type: string
+                  dataKey:
+                    type: string
+                  error:
+                    type: string
+                  matchKey:
+                    type: array
+                    items:
+                      type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  '/company/downloadMatchResult/{dataKey}':
+    get:
+      summary: download Match Result.
+      description: download Match Result.
+      operationId: downloadMatchResult
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: dataKey
+          required: true
+          type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+              detail:
+                type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'          
+  /data/collectData:
+    post:
+      summary: Send consent data to privacychain.
+      description: Send consent data to privacychain.
+      operationId: collectData
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: consent attributes will be sent to privacychain
+          required: true
+          schema:
+            type: object
+            properties:
+              optin:
+                type: array
+                items:
+                  type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+              consentId:
+                type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  '/data/getDataByConsentId/{consentId}':
+    get:
+      summary: Get the consent message.
+      description: Get the consent message.
+      operationId: getDataByConsentId
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: consentId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+              data:
+                type: object
+                properties:
+                  consentId:
+                    type: string
+                  optin:
+                    type: array
+                    items:
+                      type: string
+                  entity:
+                    type: string
+                  operation:
+                    type: string
+                  destination:
+                    type: string
+                  source:
+                    type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  '/data/getDataHistoryByConsentId/{consentId}':
+    get:
+      summary: Get the History By ConsentId.
+      description: Get the History By ConsentId.
+      operationId: getDataHistoryByConsentId
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: consentId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    txId:
+                      type: string
+                    timestamp:
+                      type: string
+                    isDelete:
+                      type: string
+                    collectData:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          consentId:
+                            type: string
+                          optin:
+                            type: array
+                            items:
+                              type: string
+                          entity:
+                            type: string
+                          operation:
+                            type: string
+                          destination:
+                            type: string
+                          source:
+                            type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /data/updateConsent:
+    post:
+      summary: Update consent data in privacychain.
+      description: Update consent data in privacychain.
+      operationId: updateConsent
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: updateBody
+          description: update parameters
+          required: true
+          schema:
+            type: object
+            properties:
+              optin:
+                type: array
+                items:
+                  type: string
+              consentId:
+                type: string
+              entity:
+                type: string
+              operation:
+                type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /data/transferData:
+    post:
+      summary: transfer consent data in privacychain.
+      description: transfer consent data in privacychain.
+      operationId: transferConsent
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: updateBody
+          description: update parameters
+          required: true
+          schema:
+            type: object
+            properties:
+              consentId:
+                type: string
+              entity:
+                type: string
+              optin:
+                type: array
+                items:
+                  type: string
+              operation:
+                type: string
+              destination:
+                type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /data/recieptData:
+    post:
+      summary: reciept consent data in privacychain.
+      description: reciept consent data in privacychain.
+      operationId: recieptConsent
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: updateBody
+          description: update parameters
+          required: true
+          schema:
+            type: object
+            properties:
+              consentId:
+                type: string
+              entity:
+                type: string
+              optin:
+                type: array
+                items:
+                  type: string
+              operation:
+                type: string
+              source:
+                type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /data/revokeData:
+    post:
+      summary: revoke consent data in privacychain.
+      description: revoke consent data in privacychain.
+      operationId: revokeData
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: updateBody
+          description: update parameters
+          required: true
+          schema:
+            type: object
+            properties:
+              consentId:
+                type: string
+              sarId:
+                type: string
+              entity:
+                type: string
+              optin:
+                type: array
+                items:
+                  type: string
+              operation:
+                type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          
+  /user/register:
+    post:
+      summary: register user in privacychain.
+      description: register user in privacychain.
+      operationId: register
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: updateBody
+          description: update parameters
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              secret:
+                type: string
+              affiliation:
+                type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/login:
+    post:
+      summary: login user in privacychain.
+      description: login user in privacychain.
+      operationId: login
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: updateBody
+          description: update parameters
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              secret:
+                type: string
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+              certificate:
+                type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/list:
+    get:
+      summary: Get User List
+      description: Get User List
+      operationId: getUserList
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: request success
+          schema:
+            type: object
+            properties:
+              returnCode:
+                type: string
+              returnMessage:
+                type: string
+              users:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    affiliation:
+                      type: string
+                    
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Error:
+    type: object
+    properties:
+      returnCode:
+        type: string
+      returnMessage:
+        type: string

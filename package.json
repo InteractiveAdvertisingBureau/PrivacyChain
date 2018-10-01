@@ -1,0 +1,28 @@
+{
+  "name": "AudienceChain",
+  "version": "1.0.0",
+  "description": "# Start the farbic env at local Prerequisites(http://hyperledger-fabric.readthedocs.io/en/latest/prereqs.html) 1. Install docker (version 17.06.2-ce or greater is required) 2. Install docker-compose     (ubuntu16.04 install docker-compose https://www.cnblogs.com/tianhei/p/7802064.html,no need sudo run docker https://www.jianshu.com/p/95e397570896) 3. install Go programming language 1.9.x 4. Install Node.js. Node.js version 9.x is not supported at this time, install version 8.9.x or greater. 5. install Python 2.7 version.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "reset-demo": "echo \"========Reset Demo Start...=========\"; cd docker; echo \"---Down byfn---\"; yes|./byfn.sh down -c foo; echo \"---generate ---\"; yes| ./byfn.sh generate -c foo; echo \"---Up byfn---\"; yes|./byfn.sh up -c foo; cd -; echo \"========Reset Demo Finished!=========\"",
+    "monitor": "echo `date \"+[%Y-%m-%d %H:%M:%S]\"`\"========Monitor Start...=========\"; node monitor-run.js; echo `date \"+[%Y-%m-%d %H:%M:%S]\"`\"========Monitor Finished!=========\"",
+    "monitor-sum": "echo `date \"+[%Y-%m-%d %H:%M:%S]\"`\"========Monitor Sum Start...=========\"; node monitor-run.js send-summary; echo `date \"+[%Y-%m-%d %H:%M:%S]\"`\"========Monitor Sum Finished!=========\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AcxiomSwateam/AudienceChain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AcxiomSwateam/AudienceChain/issues"
+  },
+  "homepage": "https://github.com/AcxiomSwateam/AudienceChain#readme",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "nodemailer": "^4.6.8",
+    "yamljs": "^0.3.0"
+  }
+}

@@ -1,0 +1,18 @@
+smtp:
+  host: localhost
+  port: 25
+mail:
+  invoke_summary_key: 'send-summary'
+  from: 'BlockChain Monitor <do-not-reply@liveramp.com>'
+  to: 
+    - gichen@acxiom.com
+    - jason.cao@acxiom.com
+  cc:
+  subject:
+    summary: '[Monitor] Summary Report'
+    good: '[Monitor] Good - BlockChain Status'
+    doubtable: '[Monitor] Doubtable - BlockChain Status'
+    bad: '[Monitor] Bad - BlockChain Status'
+    error: '[Monitor] Error - BlockChain Status'
+test_url: 'http://localhost:8088/company/getCompanyList'
+email_content_file: monitor-result.content
