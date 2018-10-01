@@ -58,21 +58,21 @@ Following entities are defined in privacychain:
 | Title | Individual manages his/her consent and updated consent propagates to downstream entities |
 | --- | --- |
 | Description |<ol><li> User login to brand website he/she signed up previously</li><li>User inquires attribute(s) he/she has provided data to the brand</li><li>User revoke consent to share data with third party </li></ol>|
-| Post condition |<ul><li>The action of revoking consent to share data with third party is captured in PrivacyChain</li><li>PrivacyChain triggers consent revocation notification to all third-party entities that had received the individual's consent previously </li></ul>|
+| Post condition |<ol><li>The action of revoking consent to share data with third party is captured in PrivacyChain</li><li>PrivacyChain triggers consent revocation notification to all third-party entities that had received the individual's consent previously </li></ol>|
 
 ## Use Case 8 – Auditing
 
 | Title | Regulator auditing Data Collector and Data Processor's privacy practice |
 | --- | --- |
 | Description |<ol><li> Regulator access PrivacyChain</li><li> Regulator retrieve audit trail of data collection, data movement with consent along with the metadata for a particular Data Collector/Processor</li></ol>|
-| Post condition |<ul><li>PrivacyChain supports audit trail data extraction</li><li> Regulator determines compliance </li></ul>|
+| Post condition |<ol><li>PrivacyChain supports audit trail data extraction</li><li> Regulator determines compliance </li></ol>|
 
 ## Use Case 9 – External Governance and Monitoring
 
 | Title | Regulatory authority and consumer advocacy group monitors the integrity of the consortium |
 | --- | --- |
 | Description |<ol><li> Regulatory authority and consumer advocacy group request setting up and running PrivacyChain nodes</li><li>PrivacyChain consortium approves request via PrivacyChain governance process</li><li>Regulatory authority and consumer advocacy group follow provisioning instructions</li><li>PrivacyChain provision regulatory authority and consumer advocacy group within the network </li></ol>|
-| Post condition |<ul><li> Regulatory authority and consumer advocacy group each runs a node within PrivacyChain</li><li>Regulatory authority and consumer advocacy group access data within the ledger</li></ul> |
+| Post condition |<ol><li> Regulatory authority and consumer advocacy group each runs a node within PrivacyChain</li><li>Regulatory authority and consumer advocacy group access data within the ledger</li></ol> |
 
 ## API Calls
 
