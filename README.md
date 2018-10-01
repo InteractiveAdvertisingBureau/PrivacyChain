@@ -44,7 +44,7 @@ Following entities are defined in privacychain:
 | Title | Data Seller tracks data movement when individual's data is sold and transferred to third party   |
 | --- | --- |
 | Description |<ol><li>Data Seller sold opt-in individual data to a third party </li><li>Third party received data from Data Seller </li></ol>| 
-| Post condition | Transfer of the individual's consent along with its meta data to the third party is captured in PrivacyChain. Third party receipt of data and individual's consent along with its meta data is captured in PrivacyChain|
+| Post condition |<ol><li> Transfer of the individual's consent along with its meta data to the third party is captured in PrivacyChain. </li><li> Third party receipt of data and individual's consent along with its meta data is captured in PrivacyChain </li></ol>|
 
 ## Use Case 6 – Individual Inquiry
 
