@@ -1,6 +1,6 @@
 ![iab tech lab](https://user-images.githubusercontent.com/19175352/38649177-0d37d17c-3daa-11e8-8934-f0fb47919716.png)
 
-# PrivacyChian
+# PrivacyChain
 
 ## Introduction
 
