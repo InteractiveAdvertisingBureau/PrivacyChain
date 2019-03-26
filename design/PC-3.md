@@ -1,10 +1,11 @@
-Name: PC-3
-Status: Unsupported
-Proposed: 2019-02-27
-Debated: 2019-02-27
-Approved: Deferred
-Title: The database payload format shall be IAB TCF
-Synopsis: Use IAB TCF encoded cookie header format for database payloads
+| Name | PC-3 |
+| --- | --- |
+| Status | Unsupported |
+| Proposed | 2019-02-27 |
+| Debated | 2019-02-27 |
+| Approved | Deferred |
+| Title | The database payload format shall be IAB TCF |
+| Synopsis | Use IAB TCF encoded cookie header format for database payloads |
 
 # Proposal
 
@@ -19,8 +20,12 @@ Shall the database record format be IAB TCF?
 
 Whereas the Southbound interface merely offers CRUD on "a database," the question at hand is <em>but what does it write?</em>.
 
-Positives: TCF is well defined, has production code to support it; is defended at Layers 8 & 9.
-Negatives: TCF is large, redundant (full of zeros) and will get far far heavier in future TCF multidimensional, multiregional versions; expresses consents between consumer principals and corporate entities controlled by IAB.
+## Positives
+TCF is well defined, has production code to support it; is defended at Layers 8 & 9.
+
+## Negatives
+
+TCF is large, redundant (full of zeros) and will get far far heavier in future TCF multidimensional, multiregional versions; expresses consents between consumer principals and corporate entities controlled by IAB.
 Resolution: defer back to product to define "what is a consent?"
 
 # References
