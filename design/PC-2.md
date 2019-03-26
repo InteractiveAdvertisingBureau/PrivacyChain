@@ -1,10 +1,11 @@
-Name: PC-2
-Status: Approved
-Proposed: 2019-02-27
-Debated: 2019-02-27
-Approved: 2019-02-27
-Title: REST API paredown to remove the /notification series
-Synopsis: Remove the notification system from the reference design
+| Name | PC-2 |
+| --- | --- |
+| Status | Approved |
+| Proposed | 2019-02-27 |
+| Debated | 2019-02-27 |
+| Approved | 2019-02-27 |
+| Title | REST API paredown to remove the /notification series |
+| Synopsis | Remove the notification system from the reference design |
 
 # Proposal
 
