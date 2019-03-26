@@ -1,0 +1,3 @@
+IAB Anti-trust Statement
+
+IAB Tech Lab is pledged to conduct its business in compliance with the applicable antitrust laws.  This guidance is intended to reduce the risks of adverse legal action on competition grounds.  Communication among participants during this conference call should be limited to Tech Lab activities.  Participants should avoid discussing or revealing to other participants non-public competitive information about themselves, including information such as current or future prices, pricing practices, costs, profits, non-public information about specific customers and your company's distribution practices.
