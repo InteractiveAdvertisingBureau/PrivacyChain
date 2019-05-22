@@ -1,4 +1,4 @@
-**Swagger Development**
+    *Swagger Development**
 =========
 
 ## <a name="check"></a>Check your swagger-codegen version
